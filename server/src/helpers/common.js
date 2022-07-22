@@ -17,7 +17,6 @@ export const validate = (schema) => {
       return next();
     } catch (error) {
       return next(error);
-      //   return next(badRequestErrorCreator(error.details));
     }
   };
 };

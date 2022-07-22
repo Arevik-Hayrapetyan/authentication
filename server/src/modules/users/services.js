@@ -1,4 +1,3 @@
-// import { getUserByEmailDb } from "../modules/users/db.js";
 import { getUserByEmailDb } from "./db.js";
 import {
     signToken,
