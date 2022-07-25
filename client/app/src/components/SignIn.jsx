@@ -19,7 +19,6 @@ export default function SignIn() {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
-
   const navigate = useNavigate();
 
   const handleClose = () => {
@@ -35,7 +34,7 @@ export default function SignIn() {
         } else {
           if (res.error === "ValidationError") {
             setMessage(
-              "The length must be between 3 and 30. End part must be com, net or ru."
+              " Email end part must be com, net or ru.The  password length must be between 3 and 30."
             );
           } else {
             setMessage("Please entry correct login and password!");

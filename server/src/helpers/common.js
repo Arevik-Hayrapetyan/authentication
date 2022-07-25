@@ -18,7 +18,6 @@ export const validate = (schema) => {
     } catch (error) {
       console.log(error, "from validate");
       return res.status(401).send({ error: "ValidationError" });
-      // return next(error);
     }
   };
 };
