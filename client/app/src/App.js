@@ -1,15 +1,31 @@
-import { Routes, Route } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import SignIn from "./components/SignIn";
-import Table from "./components/Table";
-import './App.css';
+import Dashboard from "./components/Dashboard";
+import { checkIsAuth } from "./helpers/api";
+import "./App.css";
 
 function App() {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    checkIsAuth()
+      .then((data) => data.json())
+      .then((res) => {
+        if (res.isAuth) {
+          navigate("/dashboard", { state: { data: res.score.data[0] } });
+        } else {
+          navigate("/signIn");
+        }
+      });
+  }, []);
+
   return (
     <div className="App">
-    <Routes>
-          <Route exact path="/signIn" element={<SignIn />} />
-          <Route path="/data" element={<Table />} />
-        </Routes>
+      <Routes>
+        <Route index path="/signIn" element={<SignIn />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+      </Routes>
     </div>
   );
 }
