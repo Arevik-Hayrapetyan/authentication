@@ -8,7 +8,7 @@ export const signInUser = async (req, res, next) => {
     const user = await getUserByEmailDb(email);
 
     if (user.error || !user.data) {
-      res.status(400).send({ error: "Bad Request invalid Email " });
+      res.status(400).send({ error: "Bad Request" });
     }
     const checkPassword = await comparePassword(password, user.data.password);
 
